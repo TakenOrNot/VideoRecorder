@@ -31,7 +31,7 @@
                         .recindicator {
                             -webkit-animation: recblink .5s ease-in-out alternate;
                             background: radial-gradient(ellipse closest-side, rgba(255, 0, 0, 0.75) 33%, rgba(255,17,119,0) 100%);
-                            opacity: 0;
+                            
                             animation-iteration-count: infinite;
                         }
 
