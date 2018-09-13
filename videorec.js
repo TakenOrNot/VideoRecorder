@@ -22,20 +22,29 @@
     
     
     
-    $('body').append ("<div id='reccontainer' style='position: absolute; width: 250px;height: 25px;padding: 5px;background: rgba(0,0,0,0.5);color: #EEE;font-size: 15px;display:none; right: 250px;'> <button id='rec' style='color: transparent;background: darkred;border-radius: 5px; width: 30px;overflow: hidden;height: 30px;background: radial-gradient(ellipse closest-side, rgb(214, 81, 81) 12%, rgb(113, 0, 0) 40%, rgb(109, 109, 109) 51%, rgb(84, 84, 84) 100%);cursor: pointer;top: 2px;right: 2px;position: absolute;'>Start Recording</button><button id='play' style='display:none;'>Play</button><button id='download' style='display:none;'>Download</button><video id='recorded' playsinline='' loop='' style='width: 100%;top: 35px; left: 0%; position: absolute;'></video></div><div id='recindicator' style='position: absolute; top: 9px; right: 259px; width: 15px; display: none; -webkit-animation: recblink .5s ease-in-out alternate; background: radial-gradient(ellipse closest-side, rgba(255, 0, 0, 0.75) 33%, rgba(255,17,119,0) 100%); opacity: 0; animation-iteration-count:infinite;'>&nbsp;</div>");
+    $('body').append ("<div id='reccontainer' style='position: absolute; width: 250px;height: 25px;padding: 5px;background: rgba(0,0,0,0.5);color: #EEE;font-size: 15px;display:none; right: 250px;'> <button id='rec' style='color: transparent;background: darkred;border-radius: 5px; width: 30px;overflow: hidden;height: 30px;background: radial-gradient(ellipse closest-side, rgb(214, 81, 81) 12%, rgb(113, 0, 0) 40%, rgb(109, 109, 109) 51%, rgb(84, 84, 84) 100%);cursor: pointer;top: 2px;right: 2px;position: absolute;'>Start Recording</button><button id='play' style='display:none;'>Play</button><button id='download' style='display:none;'>Download</button><video id='recorded' playsinline='' loop='' style='width: 100%;top: 35px; left: 0%; position: absolute;'></video></div>");
     
     function initStyle () {
 
         const recStyle = `
                     <style id='recStyle'>
-                        @-webkit-keyframes recblink {
-                          from {
+                        .recindicator {
+                            -webkit-animation: recblink .5s ease-in-out alternate;
+                            background: radial-gradient(ellipse closest-side, rgba(255, 0, 0, 0.75) 33%, rgba(255,17,119,0) 100%);
                             opacity: 0;
-                          }
-                          to {
-                            opacity: 1;
-                          }
+                            animation-iteration-count: infinite;
                         }
+
+                        @-webkit-keyframes recblink {
+                              from {
+
+                                radial-gradient(ellipse closest-side, rgb(214, 81, 81) 12%, rgb(113, 0, 0) 40%, rgb(109, 109, 109) 51%, rgb(84, 84, 84) 100%); 
+                              }
+                              to {
+
+                                background: radial-gradient(ellipse closest-side, rgba(255, 0, 0, 1) 45%, rgba(255, 0, 0, 1) 33%, rgb(84, 84, 84) 100%); 
+                              }
+                            }
                     </style>
                 `
         $('head').append ( recStyle );
@@ -97,13 +106,15 @@
         function toggleRecording() {
           if (recordButton.textContent === 'Start Recording') {
             startRecording();
-            $('#recindicator').css({display: "block"});
+            //$('#recindicator').css({display: "block"});
+            $('#rec').addClass('recindicator');
           } else {
             stopRecording();
             recordButton.textContent = 'Start Recording';
             playButton.disabled = false;
             downloadButton.disabled = false;
-            $('#recindicator').css({display: "none"});
+            //$('#recindicator').css({display: "none"});
+            $('#rec').removeClass('recindicator');
           }
         }
 
