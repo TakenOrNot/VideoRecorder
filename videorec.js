@@ -125,11 +125,11 @@
 
         // The nested try blocks will be simplified when Chrome 47 moves to Stable
         function startRecording() {
-            if (!streambound){
+            //if (!streambound){
                 window.streambound = true;
                 const stream = canvas.captureStream(); // frames per second
                 console.log('Started stream capture from canvas element: ', stream);   
-            }
+            //}
           let options = {mimeType: 'video/webm'};
           recordedBlobs = [];
           try {
@@ -190,7 +190,9 @@
 
         function stopRecording() {
           mediaRecorder.stop();
-          // stream.getTracks().forEach(track => track.stop());  
+            // test :    
+          stream.getTracks().forEach(track => track.stop());  
+            
           console.log('Recorded Blobs: ', recordedBlobs);
           video.controls = true;
           window.rectimecounterbound = false;
