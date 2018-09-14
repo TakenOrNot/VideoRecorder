@@ -155,8 +155,9 @@
             
             // start counting recording time
                         if (!rectimecounterbound){
-                            var rectimecounterinterval = setInterval(rectimecounter, 1000);
+                            rectimecounterinterval = setInterval(rectimecounter, 1000);
                             // var idletimeelapsed = 0;
+                            window.rectimeelapsed = 0;
                             window.rectimecounterbound = true;
                             function rectimecounter() {
                                 //cddisplay = ((cdtotaltime/1000) - window.idletimeelapsed);
