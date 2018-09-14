@@ -8,6 +8,7 @@
         initStyle ();
         //initHtml ();
         //initRecorder ();
+        window.rectimecounterbound = false;
         
     }
 
@@ -151,12 +152,37 @@
           mediaRecorder.ondataavailable = handleDataAvailable;
           mediaRecorder.start(100); // collect 100ms of data
           console.log('MediaRecorder started', mediaRecorder);
+            
+            // start counting recording time
+                        if (!rectimecounterbound){
+                            var rectimecounterinterval = setInterval(rectimecounter, 1000);
+                            // var idletimeelapsed = 0;
+                            window.rectimecounterbound = true;
+                            function rectimecounter() {
+                                //cddisplay = ((cdtotaltime/1000) - window.idletimeelapsed);
+                                rectime = window.rectimeelapsed;
+                                $("#rectime").html(" (" + rectime + ")");
+                                
+                                // if (rectime <= 0){
+                                //     if (stayalive == true) {
+                                //         stayalivefn();
+                                //         window.rectimeelapsed = 0;
+                                //     }
+                                // }
+                                // else {
+                                window.rectimeelapsed++
+                                // }
+                            }
+                        }    
+            
         }
 
         function stopRecording() {
           mediaRecorder.stop();
           console.log('Recorded Blobs: ', recordedBlobs);
           video.controls = true;
+          window.rectimecounterbound = false;
+          clearInterval(rectimecounterinterval);
         }
 
         function play() {
@@ -255,6 +281,8 @@
                     }
                 },checkspecdelay); 
     }
+    
+    
     
 	// Register
 	SWAM.registerExtension({
