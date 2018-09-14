@@ -87,8 +87,8 @@
 
 
 
-        const stream = canvas.captureStream(); // frames per second
-        console.log('Started stream capture from canvas element: ', stream);
+        // const stream = canvas.captureStream(); // frames per second
+        // console.log('Started stream capture from canvas element: ', stream);
 
         function handleSourceOpen(event) {
           console.log('MediaSource opened');
@@ -125,6 +125,10 @@
 
         // The nested try blocks will be simplified when Chrome 47 moves to Stable
         function startRecording() {
+            
+            const stream = canvas.captureStream(); // frames per second
+            console.log('Started stream capture from canvas element: ', stream);   
+            
           let options = {mimeType: 'video/webm'};
           recordedBlobs = [];
           try {
