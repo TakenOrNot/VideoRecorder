@@ -162,7 +162,7 @@
                             function rectimecounter() {
                                 //cddisplay = ((cdtotaltime/1000) - window.idletimeelapsed);
                                 //var rectime = window.rectimeelapsed;
-                                var rectime = new Date(1000 * window.rectimeelapsed).toISOString().substr(11, 8);
+                                var rectime = new Date(1000 * window.rectimeelapsed).toISOString().substr(11, 8).replace('00:','');
                                 $("#rectime").html(rectime);
                                 
                                 // if (rectime <= 0){
