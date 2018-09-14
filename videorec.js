@@ -23,7 +23,7 @@
     
     
     
-    $('body').append ("<div id='reccontainer' style='position: absolute; width: 250px;height: 25px;padding: 5px;background: rgba(0,0,0,0.5);color: #EEE;font-size: 15px;display:none; right: 250px;'> <button id='rec' style='color: transparent;background: darkred;border-radius: 5px; width: 30px;overflow: hidden;height: 30px;background: radial-gradient(ellipse closest-side, rgb(214, 81, 81) 12%, rgb(113, 0, 0) 40%, rgb(109, 109, 109) 51%, rgb(84, 84, 84) 100%);cursor: pointer;top: 2px;right: 2px;position: absolute;'>Start Recording</button><button id='play' style='display:none;'>Play</button><button id='download'>Download</button><div id='rectime' style='display: inline;text-align: right;float: right;margin-right: 35px;'></div><video id='recorded' playsinline='' loop='' style='width: 258px;border: 1px inset rgba(0,0,0,0.9);top: 35px; left: 0%; position: absolute;'></video></div>");
+    $('body').append ("<div id='reccontainer' style='position: absolute; width: 250px;height: 25px;padding: 5px;background: rgba(0,0,0,0.5);color: #EEE;font-size: 15px;display:none; right: 250px;'> <button id='rec' style='color: transparent;background: darkred;border-radius: 5px; width: 30px;overflow: hidden;height: 30px;background: radial-gradient(ellipse closest-side, rgb(214, 81, 81) 12%, rgb(113, 0, 0) 40%, rgb(109, 109, 109) 51%, rgb(84, 84, 84) 100%);cursor: pointer;top: 2px;right: 2px;position: absolute;'>Start Recording</button><button id='play' style='display:none;'>Play</button><button id='download'>Download</button><div id='rectime' style='display: inline;text-align: right;float: right;margin-right: 35px;'></div><video id='recorded' playsinline='' loop='' style='width: 258px;border: 1px inset rgba(0,0,0,0.9);top: 35px; left: 0%; position: absolute; display:none;'></video></div>");
     
     function initStyle () {
 
@@ -157,7 +157,7 @@
                         if (!rectimecounterbound){
                             window.rectimecounterinterval = setInterval(rectimecounter, 1000);
                             // var idletimeelapsed = 0;
-                            window.rectimeelapsed = 0;
+                            window.rectimeelapsed = 1;
                             window.rectimecounterbound = true;
                             function rectimecounter() {
                                 //cddisplay = ((cdtotaltime/1000) - window.idletimeelapsed);
@@ -185,6 +185,7 @@
           video.controls = true;
           window.rectimecounterbound = false;
           clearInterval(window.rectimecounterinterval);
+            $("#recorded").css({display: "block"});    
         }
 
         function play() {
