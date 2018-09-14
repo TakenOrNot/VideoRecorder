@@ -191,7 +191,7 @@
         function stopRecording() {
           mediaRecorder.stop();
             // test :    
-          stream.getTracks().forEach(track => track.stop());  
+          //stream.getTracks().forEach(track => track.stop());  
             
           console.log('Recorded Blobs: ', recordedBlobs);
           video.controls = true;
