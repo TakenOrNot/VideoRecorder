@@ -161,7 +161,8 @@
                             window.rectimecounterbound = true;
                             function rectimecounter() {
                                 //cddisplay = ((cdtotaltime/1000) - window.idletimeelapsed);
-                                var rectime = window.rectimeelapsed;
+                                //var rectime = window.rectimeelapsed;
+                                var rectime = new Date(1000 * window.rectimeelapsed).toISOString().substr(11, 8);
                                 $("#rectime").html(rectime);
                                 
                                 // if (rectime <= 0){
