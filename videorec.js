@@ -58,7 +58,7 @@
     SWAM.on ( 'gamePrep', function loadRecorder () {
     
         console.log('load Recorder');
-        
+        window.streambound = false;
         // Taken from 
         // https://webrtc.github.io/samples/src/content/capture/canvas-video/
         // https://github.com/webrtc/samples/tree/gh-pages/src/content/capture/canvas-video
@@ -125,7 +125,8 @@
 
         // The nested try blocks will be simplified when Chrome 47 moves to Stable
         function startRecording() {
-            if (!stream){
+            if (!streambound){
+                window.streambound = true;
                 const stream = canvas.captureStream(); // frames per second
                 console.log('Started stream capture from canvas element: ', stream);   
             }
