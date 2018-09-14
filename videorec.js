@@ -155,14 +155,14 @@
             
             // start counting recording time
                         if (!rectimecounterbound){
-                            var rectimecounterinterval = setInterval(rectimecounter, 1000);
+                            window.rectimecounterinterval = setInterval(rectimecounter, 1000);
                             // var idletimeelapsed = 0;
                             window.rectimeelapsed = 0;
                             window.rectimecounterbound = true;
                             function rectimecounter() {
                                 //cddisplay = ((cdtotaltime/1000) - window.idletimeelapsed);
                                 var rectime = window.rectimeelapsed;
-                                $("#rectime").html(" (" + rectime + ")");
+                                $("#rectime").html(rectime);
                                 
                                 // if (rectime <= 0){
                                 //     if (stayalive == true) {
@@ -183,7 +183,7 @@
           console.log('Recorded Blobs: ', recordedBlobs);
           video.controls = true;
           window.rectimecounterbound = false;
-          clearInterval(rectimecounterinterval);
+          clearInterval(window.rectimecounterinterval);
         }
 
         function play() {
