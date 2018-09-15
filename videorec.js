@@ -130,7 +130,8 @@
                 //const stream = canvas.captureStream(); // frames per second
                 //console.log('Started stream capture from canvas element: ', stream);   
             //}
-          let options = {mimeType: 'video/webm'};
+          //let options = {mimeType: 'video/webm'};
+          let options = {mimeType: 'video/webm,codecs=vp9'}
           recordedBlobs = [];
           try {
             mediaRecorder = new MediaRecorder(stream, options);
