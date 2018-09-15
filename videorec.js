@@ -129,6 +129,9 @@
                 stream = canvas.captureStream();
                 console.log('Started stream capture from canvas element: ', stream);   
             }
+            else {
+                console.log('captureStream already running');
+            }
           //let options = {mimeType: 'video/webm'};
           let options = {mimeType: 'video/webm; codecs=vp9'};
           recordedBlobs = [];
