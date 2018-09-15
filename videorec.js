@@ -82,13 +82,11 @@
         playButton.onclick = play;
         downloadButton.onclick = download;
 
-        // Start the GL teapot on the canvas
-        //main();
 
+        var stream = '';
 
-
-        const stream = canvas.captureStream(); // frames per second
-        console.log('Started stream capture from canvas element: ', stream);
+        //const stream = canvas.captureStream(); // frames per second
+        //console.log('Started stream capture from canvas element: ', stream);
 
         function handleSourceOpen(event) {
           console.log('MediaSource opened');
@@ -125,11 +123,12 @@
 
         // The nested try blocks will be simplified when Chrome 47 moves to Stable
         function startRecording() {
-            //if (!streambound){
-                //window.streambound = true;
+            if (!streambound){
+                window.streambound = true;
                 //const stream = canvas.captureStream(); // frames per second
-                //console.log('Started stream capture from canvas element: ', stream);   
-            //}
+                stream = canvas.captureStream();
+                console.log('Started stream capture from canvas element: ', stream);   
+            }
           //let options = {mimeType: 'video/webm'};
           let options = {mimeType: 'video/webm; codecs=vp9'};
           recordedBlobs = [];
@@ -192,7 +191,7 @@
         function stopRecording() {
           mediaRecorder.stop();
             // test :    
-          //stream.getTracks().forEach(track => track.stop());  
+          stream.getTracks().forEach(track => track.stop());  
             
           console.log('Recorded Blobs: ', recordedBlobs);
           video.controls = true;
