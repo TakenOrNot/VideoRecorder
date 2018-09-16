@@ -133,8 +133,10 @@
                 console.log('captureStream already running');
             }
           //let options = {mimeType: 'video/webm'};
-          let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : 1000000};
-          // low quality -> videoBitsPerSecond : 250000 
+          let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : 1500000};
+          // very low quality -> videoBitsPerSecond : 1000000
+          // low quality -> videoBitsPerSecond : 1500000
+          // medium quality -> videoBitsPerSecond : 2000000 
           // high quality -> videoBitsPerSecond : 2500000
             
           recordedBlobs = [];
