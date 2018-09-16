@@ -35,7 +35,7 @@
 
         // Default values for the settings
         let settings = {
-            vquality: "medium",
+            vquality: "2000000",
             
         };
 
