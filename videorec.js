@@ -45,9 +45,9 @@
         //section.addBoolean("customizeFb", "Customize Moz's Flag Borders apearance");
         section.addValuesField("vquality", "Video quality",
         {
-            "low": "1500000",
-            "medium": "2000000",
-            "high": "2500000"
+            "1500000": "low",
+            "2000000": "medium",
+            "2500000": "high"
         });
 
         
