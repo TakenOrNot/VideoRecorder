@@ -282,8 +282,6 @@
         }
         
         
-        $("#reccontainer").css({display: "none"});
-        
         function initEvents () {
             SWAM.on ( 'keydown', onKeydown );
 
