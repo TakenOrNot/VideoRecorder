@@ -274,6 +274,33 @@
           }, 100);
         }
         
+        
+        
+        function onKeydown ( event ) {
+        
+        if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
+
+            event.stopImmediatePropagation ();
+            
+            // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
+            checkspecdelay = 2000;
+            checkspec(checkspecdelay)
+               
+            
+        }
+        
+        if ( event.originalEvent.key === 'r' ) { 
+
+            event.stopImmediatePropagation ();
+            
+            toggleRecording();
+            
+        }
+
+        
+    }
+        
+        
     });
     
     
@@ -321,29 +348,7 @@
     
     
     
-    function onKeydown ( event ) {
-        
-        if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
-
-            event.stopImmediatePropagation ();
-            
-            // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
-            checkspecdelay = 2000;
-            checkspec(checkspecdelay)
-               
-            
-        }
-        
-        if ( event.originalEvent.key === 'r' ) { 
-
-            event.stopImmediatePropagation ();
-            
-            toggleRecording();
-            
-        }
-
-        
-    }
+    
     
     function onMatchStarted () {
         checkspecdelay = 10000;
