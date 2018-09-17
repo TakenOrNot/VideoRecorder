@@ -87,7 +87,7 @@
                         .closehide > #reccontainer {
                             display: none;
                         }
-                        .spectatorMode > .closehide #reccontainer {
+                        .spectatorMode > #reccontainer.closehide {
                             display: block;
                         }
                         .recindicator {
