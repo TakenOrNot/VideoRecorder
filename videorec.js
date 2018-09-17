@@ -84,12 +84,14 @@
                             display: none;
                         }
 
-                        .closehide > #reccontainer {
+                        #reccontainer.closehide {
                             display: none;
                         }
-                        .spectatorMode > #reccontainer.closehide {
+                        #reccontainer.visible {
                             display: block;
                         }
+
+ 
                         .recindicator {
                             -webkit-animation: recblink .5s ease-in-out alternate;
                             background: radial-gradient(ellipse closest-side, rgba(255, 0, 0, 0.75) 33%, rgba(255,17,119,0) 100%);
@@ -268,7 +270,8 @@
           window.rectimecounterbound = false;
           clearInterval(window.rectimecounterinterval);
             $("#recorded").css({display: "block"}); 
-            $("#reccontainer").css({display: "block"});
+            //$("#reccontainer").css({display: "block"});
+            $("#reccontainer").addClass('visible');
         }
 
         function play() {
@@ -314,9 +317,10 @@
         
     });
     
-
-
-        
+SWAM.on ( 'spectate', function () {
+    $("#reccontainer").removeClass('closehide');
+    //$("#reccontainer").removeClass('visible');
+});
 
     
 // Register
