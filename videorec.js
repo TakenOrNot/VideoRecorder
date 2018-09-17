@@ -281,7 +281,7 @@
             SWAM.on ( 'keydown', onKeydown );
 
         }
-        initEvents ():
+        initEvents();
         
         function onKeydown ( event ) {
         
