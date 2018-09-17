@@ -150,7 +150,20 @@
           video.src = window.URL.createObjectURL(superBuffer);
         }
 
-        
+        function toggleRecording() {
+          if (recordButton.textContent === 'Start Recording') {
+            startRecording();
+            //$('#recindicator').css({display: "block"});
+            $('#rec').addClass('recindicator');
+          } else {
+            stopRecording();
+            recordButton.textContent = 'Start Recording';
+            playButton.disabled = false;
+            downloadButton.disabled = false;
+            //$('#recindicator').css({display: "none"});
+            $('#rec').removeClass('recindicator');
+          }
+        }
 
         // The nested try blocks will be simplified when Chrome 47 moves to Stable
         function startRecording() {
@@ -261,6 +274,15 @@
           }, 100);
         }
         
+        
+        
+        $( "body" ).keydown(function( event ) {
+            if ( event.which == 82 ) {
+                event.stopImmediatePropagation ();      
+                event.preventDefault();
+                toggleRecording();
+            }
+        }
     });
     
     
@@ -306,20 +328,7 @@
         $("#reccontainer").css({display: "none"});
     });
     
-    function toggleRecording() {
-          if (recordButton.textContent === 'Start Recording') {
-            startRecording();
-            //$('#recindicator').css({display: "block"});
-            $('#rec').addClass('recindicator');
-          } else {
-            stopRecording();
-            recordButton.textContent = 'Start Recording';
-            playButton.disabled = false;
-            downloadButton.disabled = false;
-            //$('#recindicator').css({display: "none"});
-            $('#rec').removeClass('recindicator');
-          }
-        }
+    
     
     function onKeydown ( event ) {
         
@@ -334,13 +343,7 @@
             
         }
         
-        if ( event.originalEvent.key === 'r' ) { 
-
-            event.stopImmediatePropagation ();
-            
-            toggleRecording();
-            
-        }
+        
 
         
     }
