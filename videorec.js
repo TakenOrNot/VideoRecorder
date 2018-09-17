@@ -31,7 +31,7 @@
             window.vcodec = settings.vcodec;
             window.vquality = settings.vquality;
             
-            console.log('Settings : Codec 'settings.vcodec + ' Quality ' + settings.vquality);
+            console.log('Settings : Codec ' + settings.vcodec + ' Quality ' + settings.vquality);
             
         }
 
