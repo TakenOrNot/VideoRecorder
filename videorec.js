@@ -37,7 +37,8 @@
 
         // Default values for the settings
         let settings = {
-            vquality: "2000000",
+            vcodec: "vp8",
+            vquality: "2000000"
             
         };
 
