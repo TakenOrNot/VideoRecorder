@@ -178,6 +178,7 @@
           //let options = {mimeType: 'video/webm'};
           //let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : window.vquality};
           //let options = {mimeType: 'video/webm; codecs=' + window.vcodec};    
+          let options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};    
           //if (window.vquality != "null"){
                 //console.log('quality set');
                 //options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};  
