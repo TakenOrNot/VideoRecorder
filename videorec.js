@@ -150,20 +150,7 @@
           video.src = window.URL.createObjectURL(superBuffer);
         }
 
-        function toggleRecording() {
-          if (recordButton.textContent === 'Start Recording') {
-            startRecording();
-            //$('#recindicator').css({display: "block"});
-            $('#rec').addClass('recindicator');
-          } else {
-            stopRecording();
-            recordButton.textContent = 'Start Recording';
-            playButton.disabled = false;
-            downloadButton.disabled = false;
-            //$('#recindicator').css({display: "none"});
-            $('#rec').removeClass('recindicator');
-          }
-        }
+        
 
         // The nested try blocks will be simplified when Chrome 47 moves to Stable
         function startRecording() {
@@ -274,33 +261,6 @@
           }, 100);
         }
         
-        
-        
-        function onKeydown ( event ) {
-        
-        if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
-
-            event.stopImmediatePropagation ();
-            
-            // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
-            checkspecdelay = 2000;
-            checkspec(checkspecdelay)
-               
-            
-        }
-        
-        if ( event.originalEvent.key === 'r' ) { 
-
-            event.stopImmediatePropagation ();
-            
-            toggleRecording();
-            
-        }
-
-        
-    }
-        
-        
     });
     
     
@@ -346,9 +306,44 @@
         $("#reccontainer").css({display: "none"});
     });
     
+    function toggleRecording() {
+          if (recordButton.textContent === 'Start Recording') {
+            startRecording();
+            //$('#recindicator').css({display: "block"});
+            $('#rec').addClass('recindicator');
+          } else {
+            stopRecording();
+            recordButton.textContent = 'Start Recording';
+            playButton.disabled = false;
+            downloadButton.disabled = false;
+            //$('#recindicator').css({display: "none"});
+            $('#rec').removeClass('recindicator');
+          }
+        }
     
-    
-    
+    function onKeydown ( event ) {
+        
+        if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
+
+            event.stopImmediatePropagation ();
+            
+            // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
+            checkspecdelay = 2000;
+            checkspec(checkspecdelay)
+               
+            
+        }
+        
+        if ( event.originalEvent.key === 'r' ) { 
+
+            event.stopImmediatePropagation ();
+            
+            toggleRecording();
+            
+        }
+
+        
+    }
     
     function onMatchStarted () {
         checkspecdelay = 10000;
