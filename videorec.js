@@ -282,7 +282,7 @@
                 event.preventDefault();
                 toggleRecording();
             }
-        }
+        });
     });
     
     
