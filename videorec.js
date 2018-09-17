@@ -65,7 +65,7 @@
     }
     
     
-    $('body').append ("<div id='reccontainer' style='position: absolute; width: 250px;height: 25px;padding: 5px;background: rgba(0,0,0,0.5);color: #EEE;font-size: 15px;display:none; right: 250px;'> <button id='play' style='display:none;'>Play</button><button id='download'>Download</button><video id='recorded' playsinline='' style='width: 258px;border: 1px inset rgba(0,0,0,0.9);top: 35px; left: 0%; position: absolute; display:none;'></video><div id='closerec' style='position: absolute;right: 8px;top: 8px;opacity: .8;cursor: pointer;'>✕</div></div><button id='rec' style='color: transparent;border-radius: 5px; width: 30px;overflow: hidden;height: 30px;background: radial-gradient(ellipse closest-side, rgb(214, 81, 81) 12%, rgb(113, 0, 0) 40%, rgb(109, 109, 109) 51%, rgb(84, 84, 84) 100%);cursor: pointer;top: 2px;right: 282px;position: absolute;'>Start Recording</button><div id='rectime' style='display: inline;text-align: right;float: right;margin-right: 35px;color: #c70000;font-size: 12px;position: absolute;right: 285px;top: 10px;'></div>");
+    $('body').append ("<div id='reccontainer' style='position: absolute; width: 250px;height: 25px;padding: 5px;background: rgba(0,0,0,0.5);color: #EEE;font-size: 15px; right: 250px;'> <button id='play' style='display:none;'>Play</button><button id='download'>Download</button><video id='recorded' playsinline='' style='width: 258px;border: 1px inset rgba(0,0,0,0.9);top: 35px; left: 0%; position: absolute; display:none;'></video><div id='closerec' style='position: absolute;right: 8px;top: 8px;opacity: .8;cursor: pointer;'>✕</div></div><button id='rec' style='color: transparent;border-radius: 5px; width: 30px;overflow: hidden;height: 30px;background: radial-gradient(ellipse closest-side, rgb(214, 81, 81) 12%, rgb(113, 0, 0) 40%, rgb(109, 109, 109) 51%, rgb(84, 84, 84) 100%);cursor: pointer;top: 2px;right: 282px;position: absolute;'>Start Recording</button><div id='rectime' style='display: inline;text-align: right;float: right;margin-right: 35px;color: #c70000;font-size: 12px;position: absolute;right: 285px;top: 10px;'></div>");
     
     $("#closerec").click(function (){
         $("#reccontainer").css({display: "none"});
@@ -75,13 +75,20 @@
 
         const recStyle = `
                     <style id='recStyle'>
+                        .spectatorMode > #reccontainer {
+                            display: block;
+                        }
+
+                        #reccontainer {
+                            display: none;
+                        }
                         .recindicator {
                             -webkit-animation: recblink .5s ease-in-out alternate;
                             background: radial-gradient(ellipse closest-side, rgba(255, 0, 0, 0.75) 33%, rgba(255,17,119,0) 100%);
                             
                             animation-iteration-count: infinite;
                         }
-
+                        
                         @-webkit-keyframes recblink {
                               from {
 
@@ -284,17 +291,7 @@
         initEvents();
         
         function onKeydown ( event ) {
-        
-            if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
 
-                event.stopImmediatePropagation ();
-
-                // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
-                checkspecdelay = 2000;
-                checkspec(checkspecdelay)
-
-
-            }
         
             if ( event.originalEvent.key === '0' ) { 
 
@@ -310,72 +307,16 @@
         
     });
     
-    
-        $('#selectaircraft-1').click(function (){
 
-            $("#reccontainer").css({display: "none"});
-
-        }); 
-        $('#selectaircraft-2').click(function (){
-
-            $("#reccontainer").css({display: "none"});
-
-        });     
-        $('#selectaircraft-3').click(function (){
-
-            $("#reccontainer").css({display: "none"});
-
-        });
-        $('#selectaircraft-4').click(function (){
-
-            $("#reccontainer").css({display: "none"});
-
-        });
-        $('#selectaircraft-5').click(function (){
-
-            $("#reccontainer").css({display: "none"});
-
-        }); 
 
         
+
     
-    SWAM.on("playerRespawned", function(data){
-            let respawnedid = data['id'];
-            if (respawnedid == Players.getMe().id){
- 
-                $("#reccontainer").css({display: "none"});
-  
-            }
-    });
-    
-    
-    
-    
-    
-    
-    
-    function onMatchStarted () {
-        checkspecdelay = 10000;
-        checkspec(checkspecdelay)
-    }
-    
-    function checkspec(checkspecdelay){
-        window.setTimeout(function () {
-                    if( $('#btnFreeSpectator').css('display') == 'block' ) {
-                        console.log("v key pressed, show rec");
-                        $("#reccontainer").css({display: "block"});
-                        
-                    }
-                },checkspecdelay); 
-    }
-    
-    
-    
-	// Register
+// Register
 	SWAM.registerExtension({
 		name: 'Video Recorder for StarMash',
 		id: 'SWAM.Video',
-		description: 'Records video of the game. Record toggle shortcut key : azerty 0/à, querty 0/)',
+		description: 'Records video of the game. Record toggle shortcut key : 0)',
 		author: 'xplay, thanks to Bombita and Yutru',
 		version: '0.1',
         settingsProvider: createSettingsProvider(),
