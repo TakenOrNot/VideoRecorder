@@ -28,8 +28,10 @@
         {
             console.log ("New settings applied: ", values);
             settings = values;
+            window.vcodec = settings.vcodec;
             window.vquality = settings.vquality;
-            console.log(settings.vquality);
+            
+            console.log('Settings : Codec 'settings.vcodec + ' Quality ' + settings.vquality);
             
         }
 
@@ -42,7 +44,11 @@
         let sp = new SettingsProvider(settings, onApply);
     
         let section = sp.addSection("Video settings");
-        //section.addBoolean("customizeFb", "Customize Moz's Flag Borders apearance");
+        section.addValuesField("vcodec", "Codec",
+        {
+            "vp8": "VP8",
+            "vp9": "VP9",
+        });
         section.addValuesField("vquality", "Video quality",
         {
             "1500000": "very low",
@@ -125,7 +131,8 @@
 
         function handleSourceOpen(event) {
           console.log('MediaSource opened');
-          sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
+          //sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
+          sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="' + window.vcodec + '"');
           console.log('Source buffer: ', sourceBuffer);
         }
 
@@ -168,12 +175,9 @@
                 console.log('captureStream already running');
             }
           //let options = {mimeType: 'video/webm'};
-          let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : window.vquality};
-          // very low quality -> videoBitsPerSecond : 1000000
-          // low quality -> videoBitsPerSecond : 1500000
-          // medium quality -> videoBitsPerSecond : 2000000 
-          // high quality -> videoBitsPerSecond : 2500000
-            
+          //let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : window.vquality};
+          let options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};
+
           recordedBlobs = [];
           try {
             mediaRecorder = new MediaRecorder(stream, options);
