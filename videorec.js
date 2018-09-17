@@ -56,7 +56,7 @@
             "2000000": "low",
             "2500000": "medium",
             "3000000": "high",
-            "": "default"
+            null: "default"
         });
 
         
