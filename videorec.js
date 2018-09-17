@@ -70,6 +70,7 @@
     $("#closerec").click(function (){
         //$("#reccontainer").css({display: "none"});
         $("#reccontainer").addClass('closehide');
+        $("#reccontainer").removeClass('visible');
     });
     
     function initStyle () {
