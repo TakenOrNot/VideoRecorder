@@ -277,7 +277,7 @@
         
         
         $( "body" ).keydown(function( event ) {
-            if ( event.which == 82 ) {
+            if ( event.which == 48 ) {
                 event.stopImmediatePropagation ();      
                 event.preventDefault();
                 toggleRecording();
@@ -369,7 +369,7 @@
 	SWAM.registerExtension({
 		name: 'Video Recorder for StarMash',
 		id: 'SWAM.Video',
-		description: 'Records video of the game.',
+		description: 'Records video of the game. Record toggle shortcut key : azerty 0/à, querty 0/)',
 		author: 'xplay, thanks to Bombita and Yutru',
 		version: '0.1',
         settingsProvider: createSettingsProvider(),
