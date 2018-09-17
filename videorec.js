@@ -37,8 +37,8 @@
 
         // Default values for the settings
         let settings = {
-            vcodec: "vp8",
-            vquality: "2000000"
+            vcodec: "vp9",
+            vquality: "2500000"
             
         };
 
@@ -55,8 +55,7 @@
             "1500000": "very low",
             "2000000": "low",
             "2500000": "medium",
-            "3000000": "high",
-            null: "default"
+            "3000000": "high"
         });
 
         
@@ -178,11 +177,11 @@
             }
           //let options = {mimeType: 'video/webm'};
           //let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : window.vquality};
-          let options = {mimeType: 'video/webm; codecs=' + window.vcodec};    
-          if (window.vquality != "null"){
-              console.log('quality set');
-            options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};  
-          }
+          //let options = {mimeType: 'video/webm; codecs=' + window.vcodec};    
+          //if (window.vquality != "null"){
+                //console.log('quality set');
+                //options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};  
+          //}
          
           recordedBlobs = [];
           try {
@@ -276,7 +275,7 @@
         
         
         
-        $( "body" ).keydown(function( event ) {
+        $( "body:not(input)" ).keydown(function( event ) {
             if ( event.which == 48 ) {
                 event.stopImmediatePropagation ();      
                 event.preventDefault();
