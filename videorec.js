@@ -4,7 +4,7 @@
 
     function init () {
         console.log('init Video Recorder');
-        initEvents ();
+        //initEvents ();
         initStyle ();
         //initHtml ();
         //initRecorder ();
@@ -12,10 +12,10 @@
         
     }
 
-    function initEvents () {
-        SWAM.on ( 'keydown', onKeydown );
+    //function initEvents () {
+    //    SWAM.on ( 'keydown', onKeydown );
 
-    }
+    //}
     
     var checkspecdelay = 2000;
     
@@ -275,14 +275,39 @@
         }
         
         
+        $("#reccontainer").css({display: "none"});
         
-        $( "body:not(#chatinput)" ).keydown(function( event ) {
-            if ( event.which == 48 ) {
-                event.stopImmediatePropagation ();      
-                event.preventDefault();
-                toggleRecording();
+        function initEvents () {
+            SWAM.on ( 'keydown', onKeydown );
+
+        }
+        initEvents ():
+        
+        function onKeydown ( event ) {
+        
+            if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
+
+                event.stopImmediatePropagation ();
+
+                // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
+                checkspecdelay = 2000;
+                checkspec(checkspecdelay)
+
+
             }
-        });
+        
+            if ( event.originalEvent.key === '0' ) { 
+
+                event.stopImmediatePropagation ();
+
+                toggleRecording();
+
+
+            }
+
+        
+    }
+        
     });
     
     
@@ -323,30 +348,11 @@
             }
     });
     
-    SWAM.on ( 'gamePrep', function (){
-
-        $("#reccontainer").css({display: "none"});
-    });
     
     
     
-    function onKeydown ( event ) {
-        
-        if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
-
-            event.stopImmediatePropagation ();
-            
-            // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
-            checkspecdelay = 2000;
-            checkspec(checkspecdelay)
-               
-            
-        }
-        
-        
-
-        
-    }
+    
+    
     
     function onMatchStarted () {
         checkspecdelay = 10000;
