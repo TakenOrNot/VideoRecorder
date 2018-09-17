@@ -178,11 +178,14 @@
             }
           //let options = {mimeType: 'video/webm'};
           //let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : window.vquality};
+          let options = {mimeType: 'video/webm; codecs=' + window.vcodec};    
           if (window.vquality){
-            let options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};  
+              console.log('quality set');
+            options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};  
           }
           else {
-              let options = {mimeType: 'video/webm; codecs=' + window.vcodec}; 
+              console.log('quality not set');
+              options = {mimeType: 'video/webm; codecs=' + window.vcodec}; 
           }
 
           recordedBlobs = [];
