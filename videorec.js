@@ -276,7 +276,7 @@
         
         
         
-        $( "body:not(input)" ).keydown(function( event ) {
+        $( "body:not(#chatinput)" ).keydown(function( event ) {
             if ( event.which == 48 ) {
                 event.stopImmediatePropagation ();      
                 event.preventDefault();
