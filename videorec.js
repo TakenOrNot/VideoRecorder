@@ -179,15 +179,11 @@
           //let options = {mimeType: 'video/webm'};
           //let options = {mimeType: 'video/webm; codecs=vp9', videoBitsPerSecond : window.vquality};
           let options = {mimeType: 'video/webm; codecs=' + window.vcodec};    
-          if (window.vquality){
+          if (window.vquality != "null"){
               console.log('quality set');
             options = {mimeType: 'video/webm; codecs=' + window.vcodec, videoBitsPerSecond : window.vquality};  
           }
-          else {
-              console.log('quality not set');
-              options = {mimeType: 'video/webm; codecs=' + window.vcodec}; 
-          }
-
+         
           recordedBlobs = [];
           try {
             mediaRecorder = new MediaRecorder(stream, options);
@@ -335,6 +331,14 @@
             checkspecdelay = 2000;
             checkspec(checkspecdelay)
                
+            
+        }
+        
+        if ( event.originalEvent.key === 'r' ) { 
+
+            event.stopImmediatePropagation ();
+            
+            toggleRecording();
             
         }
 
