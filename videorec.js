@@ -17,7 +17,6 @@
 
     //}
     
-    var checkspecdelay = 2000;
     
     SWAM.on ( 'gameLoaded', init );
     
