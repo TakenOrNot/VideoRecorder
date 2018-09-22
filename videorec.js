@@ -25,13 +25,11 @@
         // This is the handler that will be executed when new settings are applied
         function onApply(values)
         {
-            console.log ("New settings applied: ", values);
+            console.log ("New VideoRec settings applied: ", values);
             settings = values;
             window.vcodec = settings.vcodec;
             window.vquality = settings.vquality;
-            
-            console.log('Settings : Codec ' + settings.vcodec + ' Quality ' + settings.vquality);
-            
+         
         }
 
         // Default values for the settings
