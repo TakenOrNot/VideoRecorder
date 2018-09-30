@@ -70,6 +70,12 @@
         $("#reccontainer").removeClass('visible');
     });
     
+    $("#rectime").click(function (){
+        $("#reccontainer").removeClass('closehide');
+        $("#reccontainer").addClass('visible');
+    
+    });
+        
     function initStyle () {
 
         const recStyle = `
